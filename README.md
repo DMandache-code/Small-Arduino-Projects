@@ -32,4 +32,3 @@ Here is a breakdown of the circuits I built so far, ranging from simple sensor t
 * **Description:** A simple audio project that uses PWM frequencies to play specific musical notes through a buzzer.
 * **Key Components:** Piezo buzzer.
 * **Concepts Learned:** Tone generation, arrays for notes and durations.
-* 
