@@ -1,5 +1,5 @@
 # Small-Arduino-Projects
-A collection of Arduino circuit experiments exploring microcontroller programming, focusing on sensor and human input.
+A collection of code for Arduino circuit experiments exploring microcontroller programming, focusing on sensor and human input.
 
 * **Microcontrollers:** Arduino Uno / Nano
 * **Language:** C/C++ (Arduino IDE)
