@@ -1,1 +1,62 @@
+/* Shift register LED display for 6 LEDs */
+
+const int oePin    = 6;  // PWM pin for brightness control (Active LOW)
+const int serPin   = 7;  // Data pin (SER / Pin 14)
+const int rclkPin  = 8;  // Latch pin (RCLK / Pin 12)
+const int srclkPin = 9;  // Clock pin (SRCLK / Pin 11)
+
+void updateShiftRegister(byte pattern) {
+  digitalWrite(rclkPin, LOW);
+  shiftOut(serPin, srclkPin, MSBFIRST, pattern);
+  digitalWrite(rclkPin, HIGH);
+}
+
+void setup() {
+  pinMode(oePin, OUTPUT);
+  pinMode(serPin, OUTPUT);
+  pinMode(rclkPin, OUTPUT);
+  pinMode(srclkPin, OUTPUT);
+
+  // Enable outputs initially at full brightness (0 = fully enabled)
+  analogWrite(oePin, 0);
+}
+
+void loop() {
+// PART 1: Light up one LED at a time from Q_F (Pin 5) down to Q_A (Pin 15)
+  
+  // Make sure OE is set to full brightness for sequence
+  analogWrite(oePin, 0);
+
+  // Bits mapped to outputs: Q_F is bit 5 (32), Q_E is bit 4 (16), ..., Q_A is bit 0 (1)
+  for (int bitPos = 5; bitPos >= 0; bitPos--) {
+    byte pattern = (1 << bitPos); // Shifts a 1 to bit position
+    updateShiftRegister(pattern);
+    delay(300);
+  }
+
+  // Turn all LEDs off briefly after sequence finishes
+  updateShiftRegister(0b00000000);
+  delay(500);
+
+// PART 2: All 6 LEDs Fade On, then Fade Off using PWM on OE
+  
+  // Turn on all 6 LEDs in the register
+  updateShiftRegister(0b00111111);
+
+  // Fade ON: Bring OE voltage from HIGH (255 = off) down to LOW (0 = full brightness)
+  for (int brightness = 255; brightness >= 0; brightness--) {
+    analogWrite(oePin, brightness);
+    delay(5); // Speed of fade-in
+  }
+
+  delay(500);
+
+  // Fade OFF: Bring OE voltage from LOW (0 = full brightness) up to HIGH (255 = off)
+  for (int brightness = 0; brightness <= 255; brightness++) {
+    analogWrite(oePin, brightness);
+    delay(5); // Speed of fade-out
+  }
+
+  delay(1000);
+}
 
