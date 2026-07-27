@@ -1,6 +1,6 @@
 /* Shift register LED display for 6 LEDs */
 
-const int oePin    = 6;  // PWM pin for brightness control (Active LOW)
+const int oePin    = 3;  // PWM pin for brightness control (Active LOW)
 const int serPin   = 7;  // Data pin (SER / Pin 14)
 const int rclkPin  = 8;  // Latch pin (RCLK / Pin 12)
 const int srclkPin = 9;  // Clock pin (SRCLK / Pin 11)
@@ -28,11 +28,11 @@ void loop() {
   analogWrite(oePin, 0);
 
   // Bits mapped to outputs: Q_F is bit 5 (32), Q_E is bit 4 (16), ..., Q_A is bit 0 (1)
-  for (int bitPos = 5; bitPos >= 0; bitPos--) {
-    byte pattern = (1 << bitPos); // Shifts a 1 to bit position
-    updateShiftRegister(pattern);
-    delay(300);
-  }
+for (int bitPos = 5; bitPos >= 0; bitPos--) {
+  byte pattern = (1 << bitPos); 
+  updateShiftRegister(pattern);
+  delay(300);
+}
 
   // Turn all LEDs off briefly after sequence finishes
   updateShiftRegister(0b00000000);
@@ -41,7 +41,7 @@ void loop() {
 // PART 2: All 6 LEDs Fade On, then Fade Off using PWM on OE
   
   // Turn on all 6 LEDs in the register
-  updateShiftRegister(0b00111111);
+  updateShiftRegister(0b11111111);
 
   // Fade ON: Bring OE voltage from HIGH (255 = off) down to LOW (0 = full brightness)
   for (int brightness = 255; brightness >= 0; brightness--) {
@@ -59,4 +59,3 @@ void loop() {
 
   delay(1000);
 }
-
