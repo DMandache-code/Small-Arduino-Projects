@@ -32,3 +32,14 @@ Here is a breakdown of the circuits I built so far, ranging from simple sensor t
 * **Description:** A simple audio project that uses PWM frequencies to play specific musical notes through a buzzer.
 * **Key Components:** Piezo buzzer.
 * **Concepts Learned:** Tone generation, arrays for notes and durations.
+
+### 6. Potentiometer-Controlled Servo Motor
+* **Description:** Demonstrates real-time position control of a servo motor using an analog potentiometer with software noise filtering to prevent motor jitter.
+* **Key Components:** Servo motor (SG90/MG996R), 10kΩ Potentiometer.
+* **Concepts Learned:** Analog-to-digital conversion (ADC), value mapping (map()), Exponential Moving Average (EMA) filtering, pulse-width modulation (PWM) servo timing.
+
+### 7. Shift Register LED Array
+* **Description:** Controls an array of 6 LEDs using a 74HC595 shift register, featuring sequential lighting patterns and smooth PWM brightness fading.
+* **Key Components:** 74HC595 Shift Register, 6× LEDs, 220Ω resistors.
+* **Concepts Learned:** Serial-to-parallel data transfer, bitwise shifting, active-LOW hardware logic, PWM brightness control via Output Enable.
+ 
