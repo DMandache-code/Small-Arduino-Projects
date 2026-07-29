@@ -42,4 +42,8 @@ Here is a breakdown of the circuits I built so far, ranging from simple sensor t
 * **Description:** Controls an array of 6 LEDs using a 74HC595 shift register, featuring sequential lighting patterns and smooth PWM brightness fading.
 * **Key Components:** 74HC595 Shift Register, 6× LEDs, 220Ω resistors.
 * **Concepts Learned:** Serial-to-parallel data transfer, bitwise shifting, active-LOW hardware logic, PWM brightness control via Output Enable.
- 
+
+### 8. Potentiometer-Drawn Waveform Oscilloscope Trace
+* **Description:** A mini interactive circuit that plots a continuous analog trace onto an OLED screen using a potentiometer, with button-triggered screen clearing.
+* **Key Components:** 0.96" SSD1306 $I^2C OLED Display, 10kΩ Potentiometer, Push button.
+* **Concepts Learned:** I^2C communication protocols, screen coordinate mapping, internal pull-up resistors (INPUT_PULLUP), Exponential Moving Average (EMA) filtering.
