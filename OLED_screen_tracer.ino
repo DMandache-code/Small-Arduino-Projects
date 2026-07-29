@@ -65,5 +65,5 @@ void loop() {
     // xPos = 0;
   }
 
-  delay(30); // Controls the "trace" drawing speed across the screen
+  delay(30);
 }
